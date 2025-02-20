@@ -26,3 +26,5 @@ Detailed Measurements:
 Report generated at: 2025-02-01 08:01
 ```
 
+## Installation with docker-compose
+
