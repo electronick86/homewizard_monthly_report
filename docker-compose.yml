@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   homewizard_report:
-    image: tonnomutilisateur/homewizard_monthly_report:latest
+    image: electronick/homewizard_monthly_report:latest
     container_name: homewizard_report
     ports:
       - "5001:5001"

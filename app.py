@@ -24,8 +24,8 @@ def test_send_report():
 
 @app.route('/fetch-data')
 def test_fetch_data():
-    fetch_energy_data()()
-    return "Monthly report sent."
+    fetch_energy_data()
+    return "Data fetched."
 
 if __name__ == "__main__":
     # Lancer le fetch initial et initialiser le scheduler
