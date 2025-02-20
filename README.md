@@ -2,8 +2,10 @@
 
 A simple project to collect the daily value of "total_power_import_kwh" on a HomeWizard meter.
 
+Every morning at 2am, the value of the energy meter is stored in sqlite.
 Every 1st day of the month, a mail is sent with the consumption of the elapsed month.
 
+Example:
 ```
 Monthly Energy Report
 ---------------------
@@ -28,3 +30,4 @@ Report generated at: 2025-02-01 08:01
 
 ## Installation with docker-compose
 
+Copy the `docker-compose.yml` file from the repository and fill the .Env file. Databse is stored in the data directory.
