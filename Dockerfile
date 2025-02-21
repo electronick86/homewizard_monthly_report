@@ -11,10 +11,11 @@ COPY . .
 RUN pip install Flask SQLAlchemy apscheduler python-dotenv requests
 
 # Exposer le port que Flask utilise
-EXPOSE 5001
+EXPOSE 5000
 
 # Définir les variables d'environnement
 ENV FLASK_APP app.py
 
 # Entrée par défaut pour exécuter l'application Flask
-CMD ["flask", "run", "--host=0.0.0.0", "--port=5001"]
+#CMD ["flask", "run", "--host=0.0.0.0", "--port=5000"]
+CMD ["python", "app.py"]

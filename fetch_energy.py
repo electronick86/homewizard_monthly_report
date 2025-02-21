@@ -7,9 +7,14 @@ from sqlalchemy.orm import sessionmaker
 from datetime import datetime
 from email.message import EmailMessage
 from dotenv import load_dotenv
+import logging
 
 # Charger les variables d'environnement
 load_dotenv()
+
+
+
+logger = logging.getLogger(__name__)
 
 Base = declarative_base()
 #engine = create_engine('sqlite:///database.db')
@@ -26,6 +31,7 @@ class EnergyReading(Base):
 Base.metadata.create_all(engine)
 
 def fetch_energy_data():
+    logger.info("Fetching homewizard data.")
     try:
         ip_address = os.getenv('HOMEWIZARD_IP')
         response = requests.get(f"http://{ip_address}/api/v1/data")
@@ -37,6 +43,7 @@ def fetch_energy_data():
         session.add(new_reading)
         session.commit()
 
+        logger.info(f"Data stored successfully: {total_power_import_kwh} kWh")
         print(f"Data stored successfully: {total_power_import_kwh} kWh")
 
     except requests.RequestException as e:

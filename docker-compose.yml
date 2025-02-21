@@ -5,7 +5,7 @@ services:
     image: electronick/homewizard_monthly_report:latest
     container_name: homewizard_report
     ports:
-      - "5001:5001"
+      - "5000:5000"
     volumes:
       - ./data:/app/data
     env_file:
