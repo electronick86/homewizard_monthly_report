@@ -6,11 +6,10 @@ from apscheduler.schedulers.background import BackgroundScheduler
 app = Flask(__name__)
 
 def schedule_fetch():
-    scheduler = BackgroundScheduler(daemon=True)
-    # Configurer le déclencheur cron pour exécuter la tâche tous les jours à 8h00
+    scheduler = BackgroundScheduler()
     scheduler.add_job(fetch_energy_data, 'cron', hour=2, minute=0)
+    scheduler.add_job(fetch_energy_data, 'cron', minute='*/1')
     scheduler.add_job(send_monthly_report, 'cron', day=1, hour=8, minute=0)
-
     scheduler.start()
 
 @app.route('/')
@@ -29,7 +28,6 @@ def test_fetch_data():
 
 if __name__ == "__main__":
     # Lancer le fetch initial et initialiser le scheduler
-
     schedule_fetch()
 
     app.run(host='0.0.0.0', port=5000)
